@@ -121,6 +121,36 @@ resource "aws_route_table" "DBRouteTable" {
     }
 }
 
+resource "aws_route_table_association" "route_public1" {
+    subnet_id = aws_subnet.PublicSubnet1.id
+    route_table_id = aws_route_table.WebRouteTable
+}
+
+resource "aws_route_table_association" "route_public2" {
+    subnet_id = aws_subnet.PublicSubnet2.id
+    route_table_id = aws_route_table.WebRouteTable.id
+}
+
+resource "aws_route_table_association" "route_private1" {
+    subnet_id = aws_subnet.PrivateSubnet1.id
+    route_table_id = aws_route_table.AppRouteTable.id
+}
+
+resource "aws_route_table_association" "route_private2" {
+    subnet_id = aws_subnet.PrivateSubnet2.id
+    route_table_id = aws_route_table.AppRouteTable.id
+}
+
+resource "aws_route_table_association" "route_private3" {
+    subnet_id = aws_subnet.PrivateSubnet3.id
+    route_table_id = aws_route_table.DBRouteTable.id
+}
+
+resource "aws_route_table_association" "route_private4" {
+    subnet_id = aws_subnet.PrivateSubnet4.id
+    route_table_id = aws_route_table.DBRouteTable.id
+}
+
 
 
 
